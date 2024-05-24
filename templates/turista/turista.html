@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Turista
+{% endblock %}
+
+{% block body %}
+<a href="/" class="home-button">Home</a>
+<div class="container">
+    <h1>Problema del Turista</h1>
+    <canvas id="grafoCanvas" width="600" height="400"></canvas>
+    <div id="adyacencias"></div>
+    <form action="{{ url_for('turista.turista') }}" method="post">
+        <label for="inicio">Nodo Inicio:</label>
+        <input type="text" id="inicio" name="inicio">
+        <label for="final">Nodo Final:</label>
+        <input type="text" id="final" name="final">
+        <button type="submit">Buscar Ruta</button>
+    </form>
+    <p>Arad, Zerind, Timisoara, Sibiu, Oradea, Lugoj, Mehadia, Drobeta, Craiova, Rimnicu Vilcea, Pitesti, Fagaras, Bucharest, Giurgiu, Urziceni, Hirsova, Eforie, Vaslui, Iasi, Neamt</p>
+    {% if ruta %}
+        <p>Camino Solución: {{ ruta|join(' -> ') }}</p>
+        <script>
+            var rutas = "{{ ruta|join(',') }}";
+            var rutaEncontrada = rutas.split(',');
+        </script>
+        <script src="{{ url_for('static', filename='js/turista.js') }}"></script>
+    {% endif %}
+</div>
+{% endblock %}

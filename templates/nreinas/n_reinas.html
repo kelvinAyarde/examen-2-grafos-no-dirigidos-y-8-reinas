@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+N-Reinas
+{% endblock %}
+
+{% block body %}
+<a href="/" class="home-button">Home</a>
+<div class="container">
+    <h1>Problema de las N-Reinas</h1>
+    <canvas id="reinasCanvas" width="600" height="600"></canvas>
+    <form action="{{ url_for('n_reinas.reina') }}" method="post">
+        <label for="n">Número de Reinas:</label>
+        <input type="number" id="n" name="n" min="4" max="20">
+        <button type="submit">Resolver</button>
+    </form>
+    {% if soluciones %}
+    <p>Soluciones encontradas:</p>
+    <ol>
+        {% for solucion in soluciones %}
+            <li>{{ solucion }}</li>
+        {% endfor %}
+    </ol>
+    <script id="soluciones" type="application/json">
+        {{ soluciones|tojson }}
+    </script>
+    <script src="{{ url_for('static', filename='js/n_reinas.js') }}"></script>
+    {% endif %}
+</div>
+{% endblock %}

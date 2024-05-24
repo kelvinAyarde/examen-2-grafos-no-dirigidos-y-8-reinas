@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Inicio
+{% endblock %}
+
+{% block body %}
+<div class="seleccion-problema">
+    <h1>Seleccione Muestra</h1>
+    <div class="problemas">
+        <div class="problema">
+            <h2>Viajero</h2>
+            <a href="/turista">
+            <img src="{{ url_for('static', filename='imgs/viajero.png') }}" alt="Problema del Viajero">
+            </a>
+        </div>
+        <div class="problema">
+            <h2>8 Reinas</h2>
+            <a href="/nreinas">
+            <img src="{{ url_for('static', filename='imgs/reinas.png') }}" alt="Problema de las 8 Reinas">
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
